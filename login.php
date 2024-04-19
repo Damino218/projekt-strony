@@ -25,7 +25,7 @@
                     <button type="submit" class="btn w-100 btn-primary btn-block">Zaloguj się</button>
                 </form>
                 <div class="mt-3 text-center">
-                    Nie masz jeszcze konta? <a href="rejestracja.php">Zarejestruj się</a>.
+                    Nie masz jeszcze konta? <a href="register.php">Zarejestruj się</a>.
                 </div>
             </div>
         </div>

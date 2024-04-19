@@ -41,7 +41,7 @@
                     <button type="submit" class="btn btn-primary btn-block w-100">Zarejestruj się</button>
                 </form>
                 <div class="mt-3 text-center">
-                    Masz już konto? <a href="logowanie.php">Zaloguj się</a>.
+                    Masz już konto? <a href="login.php">Zaloguj się</a>.
                 </div>
             </div>
         </div>
