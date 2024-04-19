@@ -10,6 +10,15 @@
 
 <body>
     <div class="container mt-5">
+    <?php if(isset($_REQUEST['submit'])) : ?>
+        <!-- Jeśli został wysłany formularz to... -->
+        <?php
+        //użyj metody z klasy
+        //dostaniemy do $result true lub false jeśli się uda lub nie
+        $result = User::Login($_REQUEST['email'], $_REQUEST['password']);
+        ?>
+    <?php else : ?>
+        <!-- Jeśli został wysłany formularz to... -->
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2 class="mb-4 text-center">Logowanie</h2>
@@ -22,13 +31,14 @@
                         <label for="password" class="form-label">Hasło:</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
-                    <button type="submit" class="btn w-100 btn-primary btn-block">Zaloguj się</button>
+                    <button type="submit" name="submit" class="btn w-100 btn-primary btn-block">Zaloguj się</button>
                 </form>
                 <div class="mt-3 text-center">
                     Nie masz jeszcze konta? <a href="register.php">Zarejestruj się</a>.
                 </div>
             </div>
         </div>
+    <?php endif; ?>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
