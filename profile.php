@@ -13,13 +13,10 @@ if(isset($_GET['profileID'])) {
 $sql = "SELECT p.ID AS profileID, p.firstName, p.lastName, p.description, ph.url FROM profile p LEFT JOIN photo ph ON p.profilePhotoID = ph.ID WHERE p.ID=?";
 
 //połącz się z bazą danych
-$db = new mysqli('localhost', 'root', '', 'strona');
+$db = new mysqli('localhost', 'root', '', 'projekt-strony');
 
 //przygotuj kwerendę do wysłania
 $query = $db->prepare($sql);
-
-//zdefiniuj tymczasowo id na 
-$id = 1;
 
 //podstaw ID
 $query->bind_param('i', $id);
@@ -71,7 +68,7 @@ $profilePhotoUrl = $result['url'];
                         <a href="#" class="nav-link">Zawartość strony</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="btn btn-primary">Zaloguj się</a>
+                        <a href="login.php" class="btn btn-primary">Zaloguj się</a>
                     </li>
                 </ul>
             </div>

@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="bg-body-secondary">
     <div class="container mt-5">
     <?php if(isset($_REQUEST['submit'])) : ?>
         <!-- Jeśli został wysłany formularz to... -->
@@ -20,7 +20,7 @@
     <?php else : ?>
         <!-- Jeśli został wysłany formularz to... -->
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-6 p-4 bg-white shadow rounded-4 align-middle">
                 <h2 class="mb-4 text-center">Logowanie</h2>
                 <form method="post">
                     <div class="mb-3">

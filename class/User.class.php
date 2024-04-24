@@ -19,7 +19,7 @@ class User {
     public static function Register(string $email, string $password) : bool {
         //funkcja rejestruje nowego użytkownika do bazy danych....
         //funkcja zwraca true jeśli się udało lub false jeśli się nie udało
-        $db = new mysqli('localhost', 'root', '', 'cms');
+        $db = new mysqli('localhost', 'root', '', 'projekt-strony');
         $sql = "INSERT INTO user (email, password) VALUES (?, ?)";
         $q = $db->prepare($sql);
         $passwordHash = password_hash($password, PASSWORD_ARGON2I);
@@ -31,7 +31,7 @@ class User {
         //funkcja loguje istniejacego uzytkownika do bazy danych...
         //funkcja zapisuje użytkownika do sesji i zwraca true jeśli użytkownik istnieje
         //funkcja zwraca false jeśli użytkownik o takim haśle nie istnieje
-        $db = new mysqli('localhost', 'root', '', 'cms');
+        $db = new mysqli('localhost', 'root', '', 'projekt-strony');
         $sql = "SELECT * FROM user WHERE email = ? LIMIT 1";
         $q = $db->prepare($sql);
         $q->bind_param("s", $email);
