@@ -62,6 +62,9 @@ require("./class/User.class.php");
                     <button type="submit" name="submit" class="btn btn-primary btn-block w-100">Zarejestruj się</button>
                 </form>
                 <div class="mt-3 text-center">
+                    <a href="index.php">Powrót do strony głównej.</a>
+                </div>
+                <div class="mt-3 text-center">
                     Masz już konto? <a href="login.php">Zaloguj się</a>.
                 </div>
             </div>
