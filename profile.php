@@ -1,36 +1,21 @@
 <?php
-//pobierz sobie z url ID profilu
-if(isset($_GET['profileID'])) {
-    //jeśli istnieje profile id w url (w linku)
-    $id = $_GET['profileID'];
+require_once('class/User.class.php');
+require_once('class/Profile.class.php');
+session_start();
+
+if(isset($_REQUEST['profileID'])) {
+    $profileID = $_REQUEST['profileID'];
+    $p = Profile::Get($profileID);
 } else {
-    //jeśli nie istnieje w linku (nie podano) to ustaw 1
-    $id = 1;
+    if(isset($_SESSION['user'])) {
+        //jest zalogowany użytkownik - pokaż jego profil
+        //załaduj profil zalogowanego użytkownika
+        $p = Profile::GetUserProfile($_SESSION['user']->GetID());
+    } else {
+        //pokaż domyślny profil
+        $p = Profile::Get(3);
+    }
 }
-
-
-//kwerenda pobiera jeden profil z tabeli po jego ikd
-$sql = "SELECT p.ID AS profileID, p.firstName, p.lastName, p.description, ph.url FROM profile p LEFT JOIN photo ph ON p.profilePhotoID = ph.ID WHERE p.ID=?";
-
-//połącz się z bazą danych
-$db = new mysqli('localhost', 'root', '', 'projekt-strony');
-
-//przygotuj kwerendę do wysłania
-$query = $db->prepare($sql);
-
-//podstaw ID
-$query->bind_param('i', $id);
-
-//wykonujemy kwerendę
-$query->execute();
-
-//odbierz wynik
-$result = $query->get_result()->fetch_assoc();
-
-$firstName = $result['firstName'];
-$lastName = $result['lastName'];
-$description = $result['description'];
-$profilePhotoUrl = $result['url'];
 ?>
 
 <!DOCTYPE html>
@@ -79,18 +64,17 @@ $profilePhotoUrl = $result['url'];
             <div class="col-md-6 p-4 bg-light rounded">
                 <div class="row align-items-center">
                     <div class="col-md-3 text-center">
-                        <img src="<?php echo $profilePhotoUrl; ?>" class="rounded-circle img-thumbnail" alt="Zdjęcie profilowe" width="150">
+                        <img src="<?php echo $p->getFullName(); ?>" class="rounded-circle img-thumbnail" alt="Zdjęcie profilowe" width="150">
                     </div>
                     <div class="col-md-9">
-                        <h2 class="mb-3"><?php echo $firstName . " " . $lastName; ?></h2>
+                        <h2 class="mb-3"><?php echo $p->getFullName(); ?></h2>
                         <p class="mb-0"><?php echo $description; ?></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </html>
