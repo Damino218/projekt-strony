@@ -24,6 +24,19 @@ require("./class/User.class.php");
         //dostaniemy do $result true lub false jeśli się uda lub nie
         $result = User::Login($_REQUEST['email'], $_REQUEST['password']);
         ?>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="mb-4 text-center">
+                    <?php
+                        if($result)
+                            echo "Udało się zalogować";
+                        else
+                            echo "Nastąpił błąd podczas logowania"
+                    ?>
+                </h2>
+                <a class="text-canter" href="index.php">Powrót do strony głównej</a>
+            </div>
+        </div>
     <?php else : ?>
         <!-- Jeśli nie został wysłany formularz to... -->
         <div class="row justify-content-center">
