@@ -13,7 +13,7 @@ if(isset($_REQUEST['profileID'])) {
         $p = Profile::GetUserProfile($_SESSION['user']->GetID());
     } else {
         //pokaż domyślny profil
-        $p = Profile::Get(3);
+        $p = Profile::Get(2);
     }
 }
 ?>
@@ -31,7 +31,7 @@ if(isset($_REQUEST['profileID'])) {
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand">Nazwa Strony</a>
+            <a href="index.php" class="navbar-brand">Nazwa Strony</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -68,7 +68,7 @@ if(isset($_REQUEST['profileID'])) {
                     </div>
                     <div class="col-md-9">
                         <h2 class="mb-3"><?php echo $p->getFullName(); ?></h2>
-                        <p class="mb-0"><?php echo $description; ?></p>
+                        <p class="mb-0">Nie wiem</p>
                     </div>
                 </div>
             </div>

@@ -66,7 +66,7 @@ class Profile {
         //TODO: znajdz i wyswietl zdjecie z bazy
 
         //fallback
-        return 'https://via.placeholder.com/300x400';
+        return 'https://via.placeholder.com/500x500';
     }
 }
 
