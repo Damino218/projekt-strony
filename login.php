@@ -1,3 +1,10 @@
+<?php
+//włącz obsługę sesji w tym pliku
+session_start();
+//zaimportuj definicję klasy
+//require wymaga zaimportowania - wykrzaczy skrypt jeśli nie uda się zaimportować
+require("./class/User.class.php");
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -18,7 +25,7 @@
         $result = User::Login($_REQUEST['email'], $_REQUEST['password']);
         ?>
     <?php else : ?>
-        <!-- Jeśli został wysłany formularz to... -->
+        <!-- Jeśli nie został wysłany formularz to... -->
         <div class="row justify-content-center">
             <div class="col-md-6 p-4 bg-white shadow rounded-4 align-middle">
                 <h2 class="mb-4 text-center">Logowanie</h2>

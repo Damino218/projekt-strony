@@ -37,6 +37,9 @@ class User {
         $q->bind_param("s", $email);
         $q->execute();
         $result = $q->get_result();
+        if(!$result) {
+            return false;
+        }
         $row = $result->fetch_assoc();
         //tu muszą się nazwy w nawiasach [] zgadzać z nazwą kolumny w bazie danych
         $id = $row['ID'];
